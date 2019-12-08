@@ -3,16 +3,15 @@ package com.nb.ejemploskotlin
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var dado: ImageView
+    //lateinit var dado: ImageView
     lateinit var animation: AnimationDrawable
     lateinit var toast: Toast
 
@@ -20,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnDado: Button = findViewById(R.id.btnLanzarDado)
+        //val btnDado: Button = findViewById(R.id.btnLanzarDado)
 
-        dado = findViewById(R.id.ivDado)
-        dado.setBackgroundResource(R.drawable.dado_vacio)
+        //dado = findViewById(R.id.ivDado)
+        ivDado.setBackgroundResource(R.drawable.dado_vacio)
 
         toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
-        btnDado.setOnClickListener {
+        btnLanzarDado.setOnClickListener {
             generarDadoAleatorio()
         }
     }
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 else -> R.drawable.dado_vacio
             }
 
-            dado.setBackgroundResource(imageToLoad)
+            ivDado.setBackgroundResource(imageToLoad)
             toast.show()
         }
 
@@ -60,10 +59,10 @@ class MainActivity : AppCompatActivity() {
 
     fun iniciarAnimacion() {
 
-        dado.setBackgroundResource(R.drawable.animation_dado)
+        ivDado.setBackgroundResource(R.drawable.animation_dado)
 
         //Obtiene animacion y castea
-        animation = dado.getBackground() as AnimationDrawable;
+        animation = ivDado.getBackground() as AnimationDrawable;
         animation.start()
     }
 
